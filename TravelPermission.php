@@ -199,22 +199,22 @@
                 <div class="sidebar-collapse">
                     <div>
                         <ul class="nav" id="side-menu">
-                        <li>
-                            <a href="1.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
-                        </li>
-                        <li>
-                            <a href="Travel Initiation.html"><i class="fa fa-television"></i> <span class="nav-label"> Monitoring </span></a>
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label"> Operational Expense </span><span class="fa arrow"></span><!-- <span class="label label-rouded pull-right p1-bg note-icon">6</span> --></a>
-                            <ul class="nav nav-second-level collapse">
-                                <li><a href="#"> Value .1 </a></li>
-                                <li><a href="#"> Value .2 </a></li>
-                                <li><a href="#"> Value .3 </a></li>
-                                <li><a href="#"> Value .4 </a></li>
-                            </ul>
-                        </li>
+                                <li>
+                                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard </span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-television"></i> <span class="nav-label"> Monitoring </span></a>
+                                    </li>
+            
+                                    <li>
+                                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label"> Operational Expense </span><span class="fa arrow"></span><!-- <span class="label label-rouded pull-right p1-bg note-icon">6</span> --></a>
+                                        <ul class="nav nav-second-level collapse">
+                                            <li><a href="#"> Value .1 </a></li>
+                                            <li><a href="#"> Value .2 </a></li>
+                                            <li><a href="#"> Value .3 </a></li>
+                                            <li><a href="#"> Value .4 </a></li>
+                                        </ul>
+                                    </li>
                         <li class="nav-heading"><span>Components</span></li>
                     </div>
                 </div>
@@ -226,7 +226,7 @@
                         <div class="row">
                                 <div class="col-sm-12">
                                     <div class="page-title">
-                                        <h1>Travel Initiation Form <small></small></h1>
+                                        <h1>Travel Permission Form <small></small></h1>
                                         <ol class="breadcrumb">
                                             <li><a href="#"><i class="fa fa-home"></i></a></li>
                                             <li class="active">USF Co.</li>
@@ -242,143 +242,163 @@
                                     <div class="panel panel-card recent-activites">
                                         <!-- Start .panel -->
                                         <div class="panel-heading">
-                                            <h4 class="panel-title"><u></u> Basic Info:</h4>
+                                            <h4 class="panel-title"><u></u> Basic Info.</h4>
 <!--                                             <div class="panel-actions">
                                                 <a href="#" class="panel-action panel-action-toggle" data-panel-toggle></a>
                                                 <a href="1.html" class="panel-action panel-action-dismiss" data-panel-dismiss></a>
                                             </div> -->
                                         </div>
-
-
-
+                                      <?php 
+                                      include('conn.php');
+                                      $sql= "select * from travel_profile where id=".$_GET['id'];
+                                      $result=mysqli_query($conn,$sql);
+                                      $row=mysqli_fetch_row($result);
+                                      
+                                      ?>
+                                      <form  name="form" method="post" action=" ">
                                         <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <span class="help-block">Name</span>
-                                                        <input type="text" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Name" class="form-control">
+                                                        <input type="text" data-masked="" name="name" value="<?php echo $row[1]; ?>"  class="form-control" >
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <span class="help-block">Designation & Department</span>
-                                                        <input type="text" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Designation & Department" class="form-control">
+                                                        <input type="text" value="<?php echo $row[2]; ?>" class="form-control">
                                                     </div>
                                                     <div class="col-sm-12">
                                                         <span class="help-block">Purpose of Travel</span>
-                                                        <input type="text" data-masked="" data-inputmask="'mask': '(999) 999-9999'" placeholder="Purpose of Travel" class="form-control">
+                                                        <input type="text" value="<?php echo $row[3]; ?>"class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <span class="help-block">Travel from</span>
+                                                        <input type="text"  placeholder="Location" name="pfrom" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <span class="help-block">Travel to</span>
+                                                        <input type="text"  placeholder="Location" name="pto" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <span class="help-block">Expected Date of Travel (To - From) </span>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="date" placeholder="From" name="dto" class="form-control">
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <input type="date"  placeholder="To" name="dfrom" class="form-control">
                                                     </div>
                                                 </div>
                                         </div>
                                         
                                         <div class="hr-line-dashed"></div>
-
-                            </br></br>
-
-                            <div class="panel-body">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <td class="tg-c3ow" colspan="3"><span style="font-weight:bold">Daily Allowance Calculation </span></td>
-                                            </tr> 
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="tg-0pky"><span> <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Own Arrangement </label> </span></td>
-                                            <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Hotel Stay </label> </span></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>                       
+                                    
+                                        <div class="panel-body">
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <td class="tg-0lax" colspan="2"><span style="font-weight:bold"> Travel Case </span></td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="tg-0lax"><center><span><label class="checkbox-inline"><input type="radio" checked="" value="normal" id="optionsRadios1" name="case">  Normal Travel Case </label></span></center></td>
+                                                            <td class="tg-0lax"><center><span><label class="checkbox-inline"><input type="radio" checked="" value="urgent" id="optionsRadios2" name="case">  Urgent Travel Case </label></span></center></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
                                     </br>
+                
+                
+                                        <div class="hr-line-dashed"></div>
+
+
+
                                     </br>
+                                    <div class="panel-body">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="tg-c3ow" colspan="4"><span style="font-weight:bold">Travelling</span></td>
+                                                    </tr> 
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td class="tg-0pky"><span> <label class="checkbox-inline"> <input type="radio" value="by air" name="traveling"> By Air </label> </span></td>
+                                                    <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="radio" value="by road usf" name="traveling"> By Road USF Co. </label> </span></td>
+                                                    <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="radio" value="by road rental" name="traveling"> By Road Rental Vehicle </label> </span></td>
+                                                    <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="radio" value="by road own" name="traveling"> By Road Own Arrangement </label> </span></td>
 
-                    <div class="hr-line-dashed"></div>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                </br>
+                                <div class="hr-line-dashed"></div>
 
-                <div class="panel-body">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <td class="tg-c3ow" colspan="3"><span style="font-weight:bold">Vehicle Fuel</span></td>
-                                </tr> 
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="tg-0pky"><span> <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> As per Entitlement </label> </span></td>
-                                <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> 4 x 4 </label> </span></td>
-                                <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> 1300 CC </label> </span></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>                       
-                        </br>
-                        </br>
-            
-                        <div class="hr-line-dashed"></div>
-
- 
-                        <div class="panel-heading">
-                                <h4 class="panel-title"> Travel Details </h4>
-                            </div>
 
                         <div class="panel-body">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <td class="tg-7btt">Date </td>
-                                            <td class="tg-amwm">From </td>
-                                            <td class="tg-amwm">To </td>
-                                            <td class="tg-amwm">Kilometers</td>
+                                            <td class="tg-c3ow" colspan="3"><span style="font-weight:bold">Lodging</span></td>
                                         </tr> 
                                     </thead>
                                     <tbody>
-                                          <tr>
-                                            <td class="tg-0lax"><input type="date" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Travelling date" class="form-control"></td>
-                                            <td class="tg-0lax"><input type="text" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Location" class="form-control"></td>
-                                            <td class="tg-0lax"><input type="text" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Location" class="form-control"></td>
-                                            <td class="tg-0lax"><input type="number" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Distance travelled" class="form-control"></td>
-                                          </tr>
-                                          <tr>
-                                                <td class="tg-0lax"><input type="date" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Travelling date" class="form-control"></td>
-                                                <td class="tg-0lax"><input type="text" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Location" class="form-control"></td>
-                                                <td class="tg-0lax"><input type="text" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Location" class="form-control"></td>
-                                                <td class="tg-0lax"><input type="number" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Distance travelled" class="form-control"></td>
-                                              </tr>
-                                              <tr>
-                                                <td class="tg-0lax"><input type="date" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Travelling date" class="form-control"></td>
-                                                <td class="tg-0lax"><input type="text" data-masked="" data-inputmask="'mask': '999-99-999-9999-9'" placeholder="Location" class="form-control"></td>
-                                                <td class="tg-0lax"><input type="text" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Location" class="form-control"></td>
-                                                <td class="tg-0lax"><input type="number" data-masked="" data-inputmask="'mask': '99/99/9999'" placeholder="Distance travelled" class="form-control"></td>
-                                              </tr>
+                                    <tr>
+                                        <td class="tg-0pky"><span> <label class="checkbox-inline"> <input type="radio" value="As per entitelment" name="lodging"> As per Entitlement </label> </span></td>
+                                        <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="radio" value="4star" name="lodging"> 4 Star </label> </span></td>
+                                        <td class="tg-0lax"><span> <label class="checkbox-inline"> <input type="radio" value="5star" name="lodging"> 5 Star </label> </span></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
 
+
+
+
                         <div class="hr-line-dashed"></div>
 
-
-                        <div class="col-sm-12"><center>
-                        <a href="Travel Permission.html"><button a  type="button" class="btn btn-outline-success"> Next </button></a>
-                        </center></div>
+                        </br>
+                        <h4 class="panel-title"><u></u> TA/DA Advance Details </h4>
 
 
 
+                        <div class="panel-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <td class="tg-0pky">Account</td>
+                                            <td class="tg-0lax">No. of Days</td>
+                                            <td class="tg-0lax">Total (Pkr)</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                            <tr>
+                                                    <td class="tg-0pky">Daily Allowance</td>
+                                                    <td class="tg-0lax"></td>
+                                                    <td class="tg-0lax"></td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="tg-0lax">Vehicle Fuel</td>
+                                                    <td class="tg-0lax"></td>
+                                                    <td class="tg-0lax"></td>
+                                            </tr>
+                                            <tr>
+                                                    <td class="tg-0lax" colspan="2">Advance 70%</td>
+                                                    <td class="tg-0lax"></td>
+                                            </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
+                            <div class="hr-line-dashed"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            <div class="col-sm-12"><center>
+                            <a href="Travel Initiation.php"><button type="button" class="btn btn-outline-success"> Back </button></a>
+                            <input type="submit" name="submit">
+                            </center></div>
+        </form>
                                 </br>
                             </br>
                         </br>
@@ -391,7 +411,7 @@
                                     </div><!-- End .panel --> 
                                 </div>
                             </div>
-
+                   
 
 
 
@@ -418,3 +438,31 @@
 
 <!-- Mirrored from psd2allconversion.com/templates/themeforest/html/boost-admin/white-sidebar/empty_page.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Mar 2019 08:24:35 GMT -->
 </html>
+
+
+<?php
+if(isset($_POST['submit']))
+{
+    $pto= $_POST['pto'];
+$pfrom=$_POST['pfrom'];
+$dto=$_POST['dto'];
+$dfrom=$_POST['dfrom'];
+$case=$_POST['case'];
+$traveling=$_POST['traveling'];
+$lodging=$_POST['lodging'];
+
+$sql="INSERT INTO travel_permission( profile_id, travel_from, travel_to, date_from, date_to, travel_case, traveling_mean, travel_lodging) VALUES (".$_GET['id'].",'".$pfrom."','".$pto."','".$dto."','".$dfrom."','".$case."','".$traveling."','".$lodging."')";
+
+if(mysqli_query($conn,$sql))
+{
+    echo "<script>alert('Data Inserted');</script>";
+    echo "<script type=\"text/javascript\">location.href = 'index.php'</script>";
+}
+else
+{
+    echo mysqli_error($conn);
+}
+}
+
+
+?>
